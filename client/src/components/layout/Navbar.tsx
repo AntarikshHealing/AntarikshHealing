@@ -17,26 +17,27 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/">
+            <div className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Antariksh Logo"
-                className="h-12 w-auto"
+                className="h-12 w-auto cursor-pointer"
+                onClick={() => window.location.href = '/'}
               />
-            </Link>
+            </div>
             <div className="ml-10 flex items-center space-x-4">
-              <Link href="/#home" className="text-muted-foreground hover:text-primary transition-colors">
+              <span onClick={() => window.location.href = '/#home'} className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                 {t('nav.home')}
-              </Link>
-              <Link href="/#services" className="text-muted-foreground hover:text-primary transition-colors">
+              </span>
+              <span onClick={() => window.location.href = '/#services'} className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                 {t('nav.services')}
-              </Link>
-              <Link href="/#about" className="text-muted-foreground hover:text-primary transition-colors">
+              </span>
+              <span onClick={() => window.location.href = '/#about'} className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                 {t('nav.about')}
-              </Link>
-              <Link href="/#contact" className="text-muted-foreground hover:text-primary transition-colors">
+              </span>
+              <span onClick={() => window.location.href = '/#contact'} className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                 {t('nav.contact')}
-              </Link>
+              </span>
             </div>
           </div>
           <div className="flex items-center">
