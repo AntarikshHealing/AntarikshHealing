@@ -3,12 +3,6 @@ import { Link } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Globe } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -32,7 +26,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link href="/">
-            <a className="font-bold text-xl">Antariksh</a>
+            <a className="flex items-center">
+              <img 
+                src="/attached_assets/logo1-removebg-preview.png" 
+                alt="Antariksh Logo" 
+                className="h-12 w-auto"
+              />
+            </a>
           </Link>
 
           {/* Desktop Navigation */}
