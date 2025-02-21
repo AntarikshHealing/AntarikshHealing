@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Sunrise, Sunset } from 'lucide-react';
 
@@ -20,7 +20,7 @@ export default function SunriseSunset() {
           `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&formatted=0`
         );
         const data = await response.json();
-        
+
         const formatTime = (isoString: string) => {
           return new Date(isoString).toLocaleTimeString([], {
             hour: '2-digit',
@@ -46,7 +46,7 @@ export default function SunriseSunset() {
   if (loading) {
     return (
       <div className="fixed bottom-4 right-4">
-        <Card className="w-48">
+        <Card className="bg-transparent border-none shadow-none">
           <CardContent className="p-4">
             <Skeleton className="h-4 w-full mb-2" />
             <Skeleton className="h-4 w-full" />
@@ -60,14 +60,23 @@ export default function SunriseSunset() {
 
   return (
     <div className="fixed bottom-4 right-4">
-      <Card className="w-48">
+      <Card className="bg-background/50 backdrop-blur-sm border-none shadow-lg">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm font-medium text-center">Daily Sun Schedule</CardTitle>
+        </CardHeader>
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-2">
-            <Sunrise className="h-4 w-4 text-primary" />
+            <div className="flex items-center gap-2">
+              <Sunrise className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium">Sunrise</span>
+            </div>
             <span className="text-sm">{sunTimes.sunrise}</span>
           </div>
           <div className="flex items-center justify-between">
-            <Sunset className="h-4 w-4 text-primary" />
+            <div className="flex items-center gap-2">
+              <Sunset className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium">Sunset</span>
+            </div>
             <span className="text-sm">{sunTimes.sunset}</span>
           </div>
         </CardContent>
