@@ -18,7 +18,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <img 
-                src="/assets/logo.png" 
+                src="/logo.png" 
                 alt="Antariksh Logo" 
                 className="h-12 w-auto mr-2"
               />

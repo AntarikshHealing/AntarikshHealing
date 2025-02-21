@@ -19,7 +19,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/">
               <img
-                src="/assets/logo.png"
+                src="/logo.png"
                 alt="Antariksh Logo"
                 className="h-12 w-auto"
               />
