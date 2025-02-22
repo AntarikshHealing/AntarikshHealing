@@ -9,8 +9,6 @@ import About from '@/components/sections/About';
 import Testimonials from '@/components/sections/Testimonials';
 import Contact from '@/components/sections/Contact';
 import SunriseSunset from '@/components/sections/SunriseSunset';
-import Weather from '@/components/sections/Weather';
-import AirQuality from '@/components/sections/AirQuality';
 
 export default function Home() {
   useEffect(() => {
@@ -49,8 +47,6 @@ export default function Home() {
         <Testimonials />
         <Contact />
         <SunriseSunset />
-        <Weather />
-        <AirQuality />
       </main>
       <Footer />
     </>
