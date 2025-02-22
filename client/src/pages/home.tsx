@@ -49,6 +49,7 @@ export default function Home() {
         <Contact />
         <SunriseSunset />
         <HinduCalendar />
+        <HinduClock />
       </main>
       <Footer />
     </>
