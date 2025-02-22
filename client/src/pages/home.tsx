@@ -9,6 +9,7 @@ import About from '@/components/sections/About';
 import Testimonials from '@/components/sections/Testimonials';
 import Contact from '@/components/sections/Contact';
 import SunriseSunset from '@/components/sections/SunriseSunset';
+import DailyPanchang from '@/components/sections/DailyPanchang';
 
 export default function Home() {
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function Home() {
         <Testimonials />
         <Contact />
         <SunriseSunset />
+        <DailyPanchang />
       </main>
       <Footer />
     </>
