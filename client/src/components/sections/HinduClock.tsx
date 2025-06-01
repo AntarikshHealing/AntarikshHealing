@@ -105,3 +105,61 @@ const HinduClock: React.FC = () => {
 };
 
 export default HinduClock;
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Card, CardContent } from '@/components/ui/card';
+import { Clock } from 'lucide-react';
+
+export default function HinduClock() {
+  const { i18n } = useTranslation();
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString(i18n.language === 'hi' ? 'hi-IN' : 'en-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString(i18n.language === 'hi' ? 'hi-IN' : 'en-IN', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  return (
+    <section className="py-16 bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4">
+        <Card className="max-w-md mx-auto">
+          <CardContent className="p-6 text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Clock className="h-8 w-8 text-primary mr-2" />
+              <h3 className="text-xl font-semibold">
+                {i18n.language === 'hi' ? 'वर्तमान समय' : 'Current Time'}
+              </h3>
+            </div>
+            <div className="text-3xl font-mono font-bold text-primary mb-2">
+              {formatTime(time)}
+            </div>
+            <div className="text-sm text-muted-foreground">
+              {formatDate(time)}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
