@@ -166,15 +166,87 @@ export default function Booking() {
                     </Card>
                   </div>
 
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-4">
+                  <div className="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <h4 className="text-lg font-semibold mb-4 text-center">
                       {i18n.language === 'hi'
-                        ? 'या फिर पहले अपॉइंटमेंट बुक करें'
-                        : 'Or book appointment first'}
-                    </p>
-                    <Button type="submit" className="w-full bg-gray-600 hover:bg-gray-700">
-                      {t('booking.submit')}
-                    </Button>
+                        ? 'अपॉइंटमेंट की जानकारी भरें'
+                        : 'Fill Appointment Details'}
+                    </h4>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="name">
+                            {i18n.language === 'hi' ? 'नाम' : 'Name'} *
+                          </Label>
+                          <Input
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder={i18n.language === 'hi' ? 'आपका नाम' : 'Your name'}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="email">
+                            {i18n.language === 'hi' ? 'ईमेल' : 'Email'} *
+                          </Label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder={i18n.language === 'hi' ? 'आपका ईमेल' : 'Your email'}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="phone">
+                            {i18n.language === 'hi' ? 'फोन नंबर' : 'Phone Number'} *
+                          </Label>
+                          <Input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder={i18n.language === 'hi' ? 'आपका फोन नंबर' : 'Your phone number'}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="date">
+                            {i18n.language === 'hi' ? 'तारीख' : 'Date'}
+                          </Label>
+                          <Input
+                            id="date"
+                            name="date"
+                            type="date"
+                            value={formData.date}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <Label htmlFor="message">
+                          {i18n.language === 'hi' ? 'संदेश' : 'Message'}
+                        </Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          placeholder={i18n.language === 'hi' 
+                            ? 'कोई विशेष बात या समस्या के बारे में बताएं' 
+                            : 'Tell us about any specific concerns or issues'}
+                          rows={3}
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700">
+                        {i18n.language === 'hi' ? 'अपॉइंटमेंट बुक करें' : 'Book Appointment'}
+                      </Button>
+                    </form>
                   </div>
                 </div>
               </TabsContent>
@@ -258,15 +330,87 @@ export default function Booking() {
                     </Card>
                   </div>
 
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-4">
+                  <div className="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <h4 className="text-lg font-semibold mb-4 text-center">
                       {i18n.language === 'hi'
-                        ? 'या फिर पहले अपॉइंटमेंट बुक करें'
-                        : 'Or book appointment first'}
-                    </p>
-                    <Button type="submit" className="w-full bg-gray-600 hover:bg-gray-700">
-                      {t('booking.submit')}
-                    </Button>
+                        ? 'अपॉइंटमेंट की जानकारी भरें'
+                        : 'Fill Appointment Details'}
+                    </h4>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="name2">
+                            {i18n.language === 'hi' ? 'नाम' : 'Name'} *
+                          </Label>
+                          <Input
+                            id="name2"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder={i18n.language === 'hi' ? 'आपका नाम' : 'Your name'}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="email2">
+                            {i18n.language === 'hi' ? 'ईमेल' : 'Email'} *
+                          </Label>
+                          <Input
+                            id="email2"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder={i18n.language === 'hi' ? 'आपका ईमेल' : 'Your email'}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="phone2">
+                            {i18n.language === 'hi' ? 'फोन नंबर' : 'Phone Number'} *
+                          </Label>
+                          <Input
+                            id="phone2"
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder={i18n.language === 'hi' ? 'आपका फोन नंबर' : 'Your phone number'}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="date2">
+                            {i18n.language === 'hi' ? 'तारीख' : 'Date'}
+                          </Label>
+                          <Input
+                            id="date2"
+                            name="date"
+                            type="date"
+                            value={formData.date}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <Label htmlFor="message2">
+                          {i18n.language === 'hi' ? 'संदेश' : 'Message'}
+                        </Label>
+                        <Textarea
+                          id="message2"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          placeholder={i18n.language === 'hi' 
+                            ? 'कोई विशेष बात या समस्या के बारे में बताएं' 
+                            : 'Tell us about any specific concerns or issues'}
+                          rows={3}
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700">
+                        {i18n.language === 'hi' ? 'अपॉइंटमेंट बुक करें' : 'Book Appointment'}
+                      </Button>
+                    </form>
                   </div>
                 </div>
               </TabsContent>
