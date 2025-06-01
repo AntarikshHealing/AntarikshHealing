@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Mail, Phone, MessageSquare } from 'lucide-react';
+import { MapPin, Mail, Phone, MessageSquare, Users, Tv } from 'lucide-react';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -29,6 +29,18 @@ export default function Contact() {
       title: "WhatsApp",
       content: "+91 6265294078",
       link: "https://wa.me/916265294078"
+    },
+    {
+      icon: <Tv className="h-6 w-6" />,
+      title: "WhatsApp Channel",
+      content: "Follow our updates",
+      link: "https://whatsapp.com/channel/0029Va54vqZ3QxS9JsWoKh3z"
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "WhatsApp Community",
+      content: "Join our community",
+      link: "https://chat.whatsapp.com/ExJmM6lcKzfD08ROzQJDNx"
     }
   ];
 

@@ -28,14 +28,14 @@ export default function Booking() {
               </TabsList>
               <TabsContent value="indian">
                 <iframe
-                  src="https://forms.gle/e39Nz2kdDDbhUncGA"
+                  src="https://forms.gle/p5nn5sufk7SygY9X8"
                   className="w-full min-h-[600px] border-0"
                   title="Booking Form - Indian Residents"
                 />
               </TabsContent>
               <TabsContent value="foreign">
                 <iframe
-                  src="https://forms.gle/e39Nz2kdDDbhUncGA"
+                  src="https://forms.gle/p5nn5sufk7SygY9X8"
                   className="w-full min-h-[600px] border-0"
                   title="Booking Form - International Clients"
                 />

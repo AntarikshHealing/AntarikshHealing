@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import { FaFacebook, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaYoutube, FaWhatsapp, FaTelegram } from 'react-icons/fa';
+import { SiWhatsapp } from 'react-icons/si';
 
 export default function Footer() {
   const { t } = useTranslation();
 
   const socialLinks = [
-    { icon: <FaFacebook className="w-5 h-5" />, href: "#", label: "Facebook" },
-    { icon: <FaInstagram className="w-5 h-5" />, href: "#", label: "Instagram" },
-    { icon: <FaYoutube className="w-5 h-5" />, href: "#", label: "YouTube" },
-    { icon: <FaWhatsapp className="w-5 h-5" />, href: "https://wa.me/916265294078", label: "WhatsApp" }
+    { icon: <FaFacebook className="w-5 h-5" />, href: "https://facebook.com/energyhealersurat", label: "Facebook" },
+    { icon: <FaInstagram className="w-5 h-5" />, href: "https://instagram.com/pranic_antariksh", label: "Instagram" },
+    { icon: <FaYoutube className="w-5 h-5" />, href: "https://youtube.com/@Antariksh-EnergyHealing", label: "YouTube" },
+    { icon: <FaWhatsapp className="w-5 h-5" />, href: "https://wa.me/916265294078", label: "WhatsApp" },
+    { icon: <SiWhatsapp className="w-5 h-5" />, href: "https://whatsapp.com/channel/0029Va54vqZ3QxS9JsWoKh3z", label: "WhatsApp Channel" },
+    { icon: <FaTelegram className="w-5 h-5" />, href: "https://t.me/energyhealingsurat", label: "Telegram" }
   ];
 
   return (

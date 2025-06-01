@@ -11,6 +11,7 @@ import Contact from '@/components/sections/Contact';
 import SunriseSunset from '@/components/sections/SunriseSunset';
 import HinduCalendar from '@/components/sections/HinduCalendar';
 import HinduClock from '@/components/sections/HinduClock';
+import SocialMedia from '@/components/sections/SocialMedia';
 
 export default function Home() {
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function Home() {
         <Booking />
         <About />
         <Testimonials />
+        <SocialMedia />
         <Contact />
         <SunriseSunset />
         <HinduCalendar />
