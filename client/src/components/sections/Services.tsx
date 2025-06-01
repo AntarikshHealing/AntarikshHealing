@@ -86,46 +86,37 @@ export default function Services() {
       price: "₹200 - ₹500 per person",
       duration: "60-90 mins",
       category: "Group"
-    },
-    {
-      icon: <Star className="h-8 w-8" />,
-      title: "Advanced Healing",
-      description: "Specialized healing for chronic conditions",
-      price: "₹1000 - ₹3000",
-      duration: "90-120 mins",
-      category: "Specialized"
-    },
-    {
-      icon: <Sparkles className="h-8 w-8" />,
-      title: "Spiritual Guidance",
-      description: "Spiritual counseling and life guidance sessions",
-      price: "₹500 - ₹1200",
-      duration: "45-60 mins",
-      category: "Consultation"
     }
   ];
 
-  const packages = [
+  // WhatsApp Catalog Packages - exactly as in your catalog
+  const catalogPackages = [
     {
-      name: "Basic Package",
-      sessions: "3 Sessions",
-      price: "₹1200",
+      name: "3 Session Package",
+      originalPrice: "₹1500",
+      offerPrice: "₹1200",
       savings: "Save ₹300",
-      includes: ["Energy Assessment", "Chakra Balancing", "Follow-up Session"]
+      sessions: "3 Sessions",
+      includes: ["Energy Assessment", "Chakra Balancing", "Follow-up Session"],
+      validity: "Valid for 1 month"
     },
     {
-      name: "Premium Package",
-      sessions: "5 Sessions",
-      price: "₹2500",
+      name: "5 Session Package", 
+      originalPrice: "₹3250",
+      offerPrice: "₹2500",
       savings: "Save ₹750",
-      includes: ["Complete Energy Healing", "Psychological Healing", "Meditation Training", "Home Blessing", "Ongoing Support"]
+      sessions: "5 Sessions",
+      includes: ["Complete Energy Healing", "Psychological Healing", "Meditation Training", "Home Blessing", "Ongoing Support"],
+      validity: "Valid for 2 months"
     },
     {
-      name: "Complete Transformation",
-      sessions: "10 Sessions",
-      price: "₹4500",
+      name: "10 Session Complete Package",
+      originalPrice: "₹6000", 
+      offerPrice: "₹4500",
       savings: "Save ₹1500",
-      includes: ["Full Body Healing", "Chakra Alignment", "Aura Cleansing", "Past Life Healing", "Spiritual Guidance", "Energy Protection"]
+      sessions: "10 Sessions",
+      includes: ["Full Body Healing", "Chakra Alignment", "Aura Cleansing", "Past Life Healing", "Spiritual Guidance", "Energy Protection"],
+      validity: "Valid for 3 months"
     }
   ];
 
@@ -196,43 +187,7 @@ export default function Services() {
           </Card>
         </motion.div>
 
-        {/* Individual Services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="text-primary">{service.icon}</div>
-                    <Badge variant="secondary">{service.category}</Badge>
-                  </div>
-                  <CardTitle className="text-lg">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="font-medium">Price:</span>
-                      <span className="text-primary font-semibold">{service.price}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-medium">Duration:</span>
-                      <span>{service.duration}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Package Deals */}
+        {/* WhatsApp Catalog Packages - Exact Match */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -240,28 +195,80 @@ export default function Services() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h3 className="text-2xl font-bold text-center mb-8">Healing Packages</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">Healing Packages (WhatsApp Catalog)</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packages.map((pkg, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+            {catalogPackages.map((pkg, index) => (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-primary/20">
                 <CardHeader>
-                  <CardTitle className="text-xl">{pkg.name}</CardTitle>
-                  <div className="text-2xl font-bold text-primary">{pkg.price}</div>
-                  <Badge variant="outline" className="w-fit mx-auto">{pkg.savings}</Badge>
+                  <CardTitle className="text-xl text-primary">{pkg.name}</CardTitle>
+                  <div className="space-y-2">
+                    <div className="text-sm text-muted-foreground line-through">{pkg.originalPrice}</div>
+                    <div className="text-3xl font-bold text-green-600">{pkg.offerPrice}</div>
+                    <Badge variant="destructive" className="w-fit mx-auto">{pkg.savings}</Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground">{pkg.validity}</div>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 mb-6">
                     {pkg.includes.map((item, idx) => (
-                      <div key={idx} className="text-sm text-muted-foreground">
-                        ✓ {item}
+                      <div key={idx} className="text-sm text-muted-foreground flex items-center">
+                        <span className="text-green-500 mr-2">✓</span>
+                        {item}
                       </div>
                     ))}
                   </div>
                   <Button className="w-full" asChild>
-                    <a href="#booking">Book Package</a>
+                    <a href="https://wa.me/916265294078" target="_blank" rel="noopener noreferrer">
+                      Book on WhatsApp
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Individual Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <h3 className="text-2xl font-bold text-center mb-8">Individual Services</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="text-primary">{service.icon}</div>
+                      <Badge variant="secondary">{service.category}</Badge>
+                    </div>
+                    <CardTitle className="text-lg">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="font-medium">Price:</span>
+                        <span className="text-primary font-semibold">{service.price}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">Duration:</span>
+                        <span>{service.duration}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </motion.div>
