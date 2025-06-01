@@ -19,7 +19,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <div className="flex items-center">
               <img
-                src="./logo.png"
+                src="/logo.png"
                 alt="Antariksh Logo"
                 className="h-12 w-auto cursor-pointer"
                 onClick={() => window.location.href = '/'}
