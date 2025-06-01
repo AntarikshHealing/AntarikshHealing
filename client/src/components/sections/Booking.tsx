@@ -27,31 +27,15 @@ export default function Booking() {
     });
   };
 
-  const handlePayment = async (amount: number) => {
+  const handlePayment = async (amount: number, itemName: string) => {
     try {
-      const options = {
-        key: 'rzp_test_9WtIpBHcAFuX8p', // Test key - replace with your actual key
-        amount: amount * 100, // Amount in paise
-        currency: 'INR',
-        name: 'Antariksh Energy Healing',
-        description: 'Energy Healing Session',
-        image: '/logo.png',
-        handler: function (response: any) {
-          alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-          handleSubmit();
-        },
-        prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone
-        },
-        theme: {
-          color: '#ea580c'
-        }
-      };
-
-      const rzp = new (window as any).Razorpay(options);
-      rzp.open();
+      alert(
+        t('booking.payment_contact', {
+          amount: amount,
+          itemName: itemName
+        })
+      );
+      handleSubmit();
     } catch (error) {
       console.error('Payment failed:', error);
       alert('Payment failed. Please try again.');
@@ -93,7 +77,7 @@ export default function Booking() {
                   </h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(500)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(500, 'Energy Healing Session')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -106,12 +90,12 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹500</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(800)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(800, 'Chakra Balancing')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -124,12 +108,12 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹800</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(300)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(300, 'Distance Healing')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -142,12 +126,12 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹300</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(1200)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(1200, 'Complete Healing Package')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -160,7 +144,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹1200</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -237,8 +221,8 @@ export default function Booking() {
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder={i18n.language === 'hi' 
-                            ? 'कोई विशेष बात या समस्या के बारे में बताएं' 
+                          placeholder={i18n.language === 'hi'
+                            ? 'कोई विशेष बात या समस्या के बारे में बताएं'
                             : 'Tell us about any specific concerns or issues'}
                           rows={3}
                         />
@@ -257,7 +241,7 @@ export default function Booking() {
                   </h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(500)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(500, 'Energy Healing Session')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -270,12 +254,12 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹500</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(800)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(800, 'Chakra Balancing')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -288,12 +272,12 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹800</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(300)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(300, 'Distance Healing')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -306,12 +290,12 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹300</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(1200)}>
+                    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handlePayment(1200, 'Complete Healing Package')}>
                       <CardHeader className="text-center">
                         <CreditCard className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                         <CardTitle className="text-lg">
@@ -324,7 +308,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹1200</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'भुगतान करें' : 'Pay Now'}
+                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -401,8 +385,8 @@ export default function Booking() {
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder={i18n.language === 'hi' 
-                            ? 'कोई विशेष बात या समस्या के बारे में बताएं' 
+                          placeholder={i18n.language === 'hi'
+                            ? 'कोई विशेष बात या समस्या के बारे में बताएं'
                             : 'Tell us about any specific concerns or issues'}
                           rows={3}
                         />
