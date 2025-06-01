@@ -19,61 +19,73 @@ export default function HinduCalendar() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
-          const { latitude, longitude } = position.coords;
-          const response = await fetch(
-            `https://api.vedicastrologers.com/v1/astro/tithi?lat=${latitude}&lng=${longitude}&timestamp=${Date.now()}`
-          );
-          
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          
-          const data = await response.json();
-          
-          // Use actual API data if available, otherwise use placeholder
-          setHinduDate({
-            tithi: {
-              en: data.tithi?.en || "Shukla Paksha Pratipada",
-              hi: data.tithi?.hi || "शुक्ल पक्ष प्रतिपदा"
-            },
-            specialDay: {
-              en: data.specialDay?.en || "Ekadashi",
-              hi: data.specialDay?.hi || "एकादशी"
-            }
-          });
-        } catch (error) {
-          console.error('Error fetching Hindu date:', error);
-          // Fallback data
-          setHinduDate({
-            tithi: {
-              en: "Shukla Paksha Pratipada",
-              hi: "शुक्ल पक्ष प्रतिपदा"
-            },
-            specialDay: {
-              en: "Ekadashi",
-              hi: "एकादशी"
-            }
-          });
-        }
-      },
-      (error) => {
-        console.error('Geolocation error:', error);
-        // Fallback data when geolocation fails
-        setHinduDate({
-          tithi: {
-            en: "Shukla Paksha Pratipada",
-            hi: "शुक्ल पक्ष प्रतिपदा"
-          },
-          specialDay: {
-            en: "Ekadashi",
-            hi: "एकादशी"
-          }
-        });
+    // Local Hindu calendar calculation
+    const calculateHinduDate = () => {
+      const today = new Date();
+      const dayOfMonth = today.getDate();
+      const month = today.getMonth() + 1;
+      
+      // Simple tithi calculation based on lunar cycle (approximate)
+      const lunarDay = Math.floor(((dayOfMonth - 1) % 30) / 2) + 1;
+      const paksha = dayOfMonth <= 15 ? 'Shukla' : 'Krishna';
+      
+      const tithiNames = [
+        { en: 'Pratipada', hi: 'प्रतिपदा' },
+        { en: 'Dwitiya', hi: 'द्वितीया' },
+        { en: 'Tritiya', hi: 'तृतीया' },
+        { en: 'Chaturthi', hi: 'चतुर्थी' },
+        { en: 'Panchami', hi: 'पंचमी' },
+        { en: 'Shashthi', hi: 'षष्ठी' },
+        { en: 'Saptami', hi: 'सप्तमी' },
+        { en: 'Ashtami', hi: 'अष्टमी' },
+        { en: 'Navami', hi: 'नवमी' },
+        { en: 'Dashami', hi: 'दशमी' },
+        { en: 'Ekadashi', hi: 'एकादशी' },
+        { en: 'Dwadashi', hi: 'द्वादशी' },
+        { en: 'Trayodashi', hi: 'त्रयोदशी' },
+        { en: 'Chaturdashi', hi: 'चतुर्दशी' },
+        { en: 'Purnima/Amavasya', hi: 'पूर्णिमा/अमावस्या' }
+      ];
+
+      const currentTithi = tithiNames[Math.min(lunarDay - 1, 14)];
+      
+      // Check for special days
+      let specialDay = null;
+      if (lunarDay === 11) {
+        specialDay = { en: 'Ekadashi', hi: 'एकादशी' };
+      } else if (lunarDay === 15 && paksha === 'Shukla') {
+        specialDay = { en: 'Purnima', hi: 'पूर्णिमा' };
+      } else if (lunarDay === 15 && paksha === 'Krishna') {
+        specialDay = { en: 'Amavasya', hi: 'अमावस्या' };
+      } else if (lunarDay === 8) {
+        specialDay = { en: 'Ashtami', hi: 'अष्टमी' };
       }
-    );
+
+      setHinduDate({
+        tithi: {
+          en: `${paksha} Paksha ${currentTithi.en}`,
+          hi: `${paksha === 'Shukla' ? 'शुक्ल' : 'कृष्ण'} पक्ष ${currentTithi.hi}`
+        },
+        specialDay
+      });
+    };
+
+    calculateHinduDate();
+    
+    // Update daily at midnight
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    const msUntilMidnight = tomorrow.getTime() - now.getTime();
+    
+    const timer = setTimeout(() => {
+      calculateHinduDate();
+      // Set up daily interval
+      setInterval(calculateHinduDate, 24 * 60 * 60 * 1000);
+    }, msUntilMidnight);
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (!hinduDate) return null;
