@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Hero from '@/components/sections/Hero';
 import Services from '@/components/sections/Services';
