@@ -1,128 +1,133 @@
+
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Mail, Phone, MessageSquare, Users, Tv } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react';
 
-export default function Contact() {
-  const { t } = useTranslation();
+const Contact: React.FC = () => {
+  const { i18n } = useTranslation();
 
-  const contactInfo = [
+  const contactMethods = [
     {
-      icon: <MapPin className="h-6 w-6" />,
-      title: t('contact.address'),
-      content: "240, Mandir faliyu, Village - Kasad, Olpad, Surat. 394540"
+      icon: <Phone className="h-8 w-8" />,
+      title: {
+        en: 'Phone',
+        hi: 'फोन'
+      },
+      value: '+91 6265294078',
+      description: {
+        en: 'Call for immediate consultation',
+        hi: 'तत्काल परामर्श के लिए कॉल करें'
+      }
     },
     {
-      icon: <Mail className="h-6 w-6" />,
-      title: t('contact.email'),
-      content: "energyhealersurat@gmail.com",
-      link: "mailto:energyhealersurat@gmail.com"
+      icon: <MessageCircle className="h-8 w-8" />,
+      title: {
+        en: 'WhatsApp',
+        hi: 'व्हाट्सऐप'
+      },
+      value: '+91 6265294078',
+      description: {
+        en: 'Message us anytime',
+        hi: 'किसी भी समय संदेश भेजें'
+      }
     },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: t('contact.phone'),
-      content: "+91 6265294078",
-      link: "tel:+916265294078"
+      icon: <Mail className="h-8 w-8" />,
+      title: {
+        en: 'Email',
+        hi: 'ईमेल'
+      },
+      value: 'antarikshhealing@gmail.com',
+      description: {
+        en: 'Send us your queries',
+        hi: 'अपने प्रश्न भेजें'
+      }
     },
     {
-      icon: <MessageSquare className="h-6 w-6" />,
-      title: "WhatsApp",
-      content: "+91 6265294078",
-      link: "https://wa.me/916265294078"
-    },
-    {
-      icon: <Tv className="h-6 w-6" />,
-      title: "WhatsApp Channel",
-      content: "Follow our updates",
-      link: "https://whatsapp.com/channel/0029Va54vqZ3QxS9JsWoKh3z"
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "WhatsApp Community",
-      content: "Join our community",
-      link: "https://chat.whatsapp.com/ExJmM6lcKzfD08ROzQJDNx"
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "UPI Payment (India)",
-      content: "antarikshhealing@axl",
-      link: "upi://pay?pa=antarikshhealing@axl"
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "PayPal (International)",
-      content: "antarikshhealing@axl",
-      link: "https://paypal.me/antariksh369"
+      icon: <MapPin className="h-8 w-8" />,
+      title: {
+        en: 'Location',
+        hi: 'स्थान'
+      },
+      value: 'India',
+      description: {
+        en: 'Available for online consultation',
+        hi: 'ऑनलाइन परामर्श उपलब्ध'
+      }
     }
   ];
 
   return (
-    <section id="contact" className="py-20 bg-muted">
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold mb-4">{t('contact.title')}</h2>
-        </motion.div>
+    <section id="contact" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact Us'}
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            {i18n.language === 'hi' 
+              ? 'आपके जीवन की समस्याओं का समाधान पाने के लिए आज ही संपर्क करें'
+              : 'Contact us today to find solutions to your life problems'
+            }
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {contactInfo.map((info, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center">
-                    <div className="text-primary mr-4">{info.icon}</div>
-                    <div>
-                      <h3 className="font-semibold mb-2">{info.title}</h3>
-                      {info.link ? (
-                        <a 
-                          href={info.link}
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                          target={info.link.startsWith('http') ? "_blank" : undefined}
-                          rel={info.link.startsWith('http') ? "noopener noreferrer" : undefined}
-                        >
-                          {info.content}
-                        </a>
-                      ) : (
-                        <p className="text-muted-foreground">{info.content}</p>
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {contactMethods.map((method, index) => (
+            <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <div className="flex justify-center text-orange-600 mb-4">
+                  {method.icon}
+                </div>
+                <CardTitle className="text-xl font-semibold text-gray-800">
+                  {method.title[i18n.language as 'en' | 'hi']}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-lg font-medium text-orange-600 mb-2">
+                  {method.value}
+                </p>
+                <CardDescription className="text-gray-600">
+                  {method.description[i18n.language as 'en' | 'hi']}
+                </CardDescription>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        {/* Google Maps Embed */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="w-full h-[400px] rounded-lg overflow-hidden"
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0145662163776!2d72.89858767599731!3d21.147899980531396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04db38c72c623%3A0x9e39f5c4f6382bbc!2sKasad%2C%20Gujarat%20394540!5e0!3m2!1sen!2sin!4v1708552496069!5m2!1sen!2sin"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </motion.div>
+        <div className="text-center">
+          <div className="bg-orange-50 rounded-lg p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              {i18n.language === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}
+            </h3>
+            <p className="text-gray-600 mb-6">
+              {i18n.language === 'hi' 
+                ? 'व्यक्तिगत परामर्श के लिए आज ही संपर्क करें और अपने जीवन की समस्याओं का समाधान पाएं'
+                : 'Contact us today for personal consultation and find solutions to your life problems'
+              }
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="https://wa.me/916265294078" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300"
+              >
+                {i18n.language === 'hi' ? 'WhatsApp पर संपर्क करें' : 'Contact on WhatsApp'}
+              </a>
+              <a 
+                href="tel:+916265294078"
+                className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors duration-300"
+              >
+                {i18n.language === 'hi' ? 'फोन करें' : 'Call Now'}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Contact;

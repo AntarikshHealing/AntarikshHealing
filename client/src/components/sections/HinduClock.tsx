@@ -59,3 +59,49 @@ export default function HinduClock() {
     </div>
   );
 }
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const HinduClock: React.FC = () => {
+  const [time, setTime] = useState(new Date());
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('hi-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+  };
+
+  return (
+    <section className="py-12 bg-gradient-to-br from-orange-50 to-red-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8">
+            {i18n.language === 'hi' ? 'हिंदू घड़ी' : 'Hindu Clock'}
+          </h2>
+          <div className="inline-block bg-white rounded-lg shadow-lg p-8">
+            <div className="text-4xl font-mono text-orange-600 mb-4">
+              {formatTime(time)}
+            </div>
+            <div className="text-sm text-gray-600">
+              {i18n.language === 'hi' ? 'वर्तमान समय' : 'Current Time'}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HinduClock;
