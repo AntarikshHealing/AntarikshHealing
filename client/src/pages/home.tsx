@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Hero from '@/components/sections/Hero';
 import Services from '@/components/sections/Services';
 import Booking from '@/components/sections/Booking';
@@ -40,7 +40,8 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://antariksh.com" />
       </Helmet>
-
+    <div className="min-h-screen">
+      <AnnouncementBar />
       <Navbar />
       <main>
         <Hero />
@@ -55,6 +56,7 @@ export default function Home() {
         <HinduClock />
       </main>
       <Footer />
+    </div>
     </>
   );
 }
