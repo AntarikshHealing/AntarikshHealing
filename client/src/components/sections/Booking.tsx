@@ -90,7 +90,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹500</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -108,7 +108,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹800</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -126,7 +126,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹300</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -144,7 +144,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹1200</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -254,7 +254,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹500</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -272,7 +272,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹800</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -290,7 +290,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹300</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
@@ -308,7 +308,7 @@ export default function Booking() {
                       <CardContent className="text-center">
                         <div className="text-2xl font-bold text-orange-600">₹1200</div>
                         <Button className="w-full mt-2 bg-orange-600 hover:bg-orange-700">
-                          {i18n.language === 'hi' ? 'संपर्क करें' : 'Contact for Payment'}
+                          {i18n.language === 'hi' ? 'भुगतान की जानकारी' : 'Payment Details'}
                         </Button>
                       </CardContent>
                     </Card>
