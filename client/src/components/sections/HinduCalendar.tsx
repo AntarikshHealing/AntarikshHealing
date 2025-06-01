@@ -19,28 +19,49 @@ export default function HinduCalendar() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      try {
-        const { latitude, longitude } = position.coords;
-        const response = await fetch(
-          `https://api.vedicastrologers.com/v1/astro/tithi?lat=${latitude}&lng=${longitude}&timestamp=${Date.now()}`
-        );
-        const data = await response.json();
-
-        // Placeholder data with both languages
-        setHinduDate({
-          tithi: {
-            en: "Shukla Paksha Pratipada",
-            hi: "शुक्ल पक्ष प्रतिपदा"
-          },
-          specialDay: {
-            en: "Ekadashi",
-            hi: "एकादशी"
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const response = await fetch(
+            `https://api.vedicastrologers.com/v1/astro/tithi?lat=${latitude}&lng=${longitude}&timestamp=${Date.now()}`
+          );
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
-        });
-      } catch (error) {
-        console.error('Error fetching Hindu date:', error);
-        // Fallback data
+          
+          const data = await response.json();
+          
+          // Use actual API data if available, otherwise use placeholder
+          setHinduDate({
+            tithi: {
+              en: data.tithi?.en || "Shukla Paksha Pratipada",
+              hi: data.tithi?.hi || "शुक्ल पक्ष प्रतिपदा"
+            },
+            specialDay: {
+              en: data.specialDay?.en || "Ekadashi",
+              hi: data.specialDay?.hi || "एकादशी"
+            }
+          });
+        } catch (error) {
+          console.error('Error fetching Hindu date:', error);
+          // Fallback data
+          setHinduDate({
+            tithi: {
+              en: "Shukla Paksha Pratipada",
+              hi: "शुक्ल पक्ष प्रतिपदा"
+            },
+            specialDay: {
+              en: "Ekadashi",
+              hi: "एकादशी"
+            }
+          });
+        }
+      },
+      (error) => {
+        console.error('Geolocation error:', error);
+        // Fallback data when geolocation fails
         setHinduDate({
           tithi: {
             en: "Shukla Paksha Pratipada",
@@ -52,7 +73,7 @@ export default function HinduCalendar() {
           }
         });
       }
-    });
+    );
   }, []);
 
   if (!hinduDate) return null;
