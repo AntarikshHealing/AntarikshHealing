@@ -161,31 +161,60 @@ export default function Services() {
         </motion.div>
 
         {/* Payment Information */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <Card className="bg-blue-50 border-blue-200">
-            <CardContent className="p-6 text-center">
-              <div className="flex items-center justify-center mb-4">
-                <CreditCard className="h-8 w-8 text-blue-600 mr-2" />
-                <h3 className="text-2xl font-bold text-blue-800">International Payment</h3>
-              </div>
-              <p className="text-blue-700 mb-4">For international clients - PayPal payment available</p>
-              <div className="space-y-2 mb-4">
-                <p className="text-sm text-blue-600">PayPal: antarikshhealing@axl</p>
-              </div>
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                <a href="https://paypal.me/antariksh369" target="_blank" rel="noopener noreferrer">
-                  Pay via PayPal
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {/* Indian Payment */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Card className="bg-orange-50 border-orange-200">
+              <CardContent className="p-6 text-center">
+                <div className="flex items-center justify-center mb-4">
+                  <CreditCard className="h-8 w-8 text-orange-600 mr-2" />
+                  <h3 className="text-2xl font-bold text-orange-800">Indian Payment</h3>
+                </div>
+                <p className="text-orange-700 mb-4">For Indian clients - UPI/Bank Transfer</p>
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm text-orange-600">UPI ID: antarikshhealing@axl</p>
+                  <p className="text-sm text-orange-600">Phone Pay/Google Pay: +91 6265294078</p>
+                </div>
+                <Button size="lg" className="bg-orange-600 hover:bg-orange-700" asChild>
+                  <a href="https://wa.me/916265294078" target="_blank" rel="noopener noreferrer">
+                    Contact for Payment
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* International Payment */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <Card className="bg-blue-50 border-blue-200">
+              <CardContent className="p-6 text-center">
+                <div className="flex items-center justify-center mb-4">
+                  <CreditCard className="h-8 w-8 text-blue-600 mr-2" />
+                  <h3 className="text-2xl font-bold text-blue-800">International Payment</h3>
+                </div>
+                <p className="text-blue-700 mb-4">For international clients - PayPal payment</p>
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm text-blue-600">PayPal: antarikshhealing@axl</p>
+                </div>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+                  <a href="https://paypal.me/antariksh369" target="_blank" rel="noopener noreferrer">
+                    Pay via PayPal
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
 
         {/* WhatsApp Catalog Packages - Exact Match */}
         <motion.div

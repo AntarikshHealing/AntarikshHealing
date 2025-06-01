@@ -44,6 +44,12 @@ export default function Contact() {
     },
     {
       icon: <Mail className="h-6 w-6" />,
+      title: "UPI Payment (India)",
+      content: "antarikshhealing@axl",
+      link: "upi://pay?pa=antarikshhealing@axl"
+    },
+    {
+      icon: <Mail className="h-6 w-6" />,
       title: "PayPal (International)",
       content: "antarikshhealing@axl",
       link: "https://paypal.me/antariksh369"

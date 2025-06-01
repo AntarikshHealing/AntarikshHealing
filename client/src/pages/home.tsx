@@ -10,7 +10,6 @@ import Testimonials from '@/components/sections/Testimonials';
 import Contact from '@/components/sections/Contact';
 import SunriseSunset from '@/components/sections/SunriseSunset';
 import HinduCalendar from '@/components/sections/HinduCalendar';
-import HinduCalendar from '@/components/sections/HinduCalendar';
 import SocialMedia from '@/components/sections/SocialMedia';
 
 export default function Home() {
@@ -51,7 +50,6 @@ export default function Home() {
         <SocialMedia />
         <Contact />
         <SunriseSunset />
-        <HinduCalendar />
         <HinduCalendar />
       </main>
       <Footer />
