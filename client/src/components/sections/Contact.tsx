@@ -41,6 +41,12 @@ export default function Contact() {
       title: "WhatsApp Community",
       content: "Join our community",
       link: "https://chat.whatsapp.com/ExJmM6lcKzfD08ROzQJDNx"
+    },
+    {
+      icon: <Mail className="h-6 w-6" />,
+      title: "PayPal (International)",
+      content: "antarikshhealing@axl",
+      link: "https://paypal.me/antariksh369"
     }
   ];
 
