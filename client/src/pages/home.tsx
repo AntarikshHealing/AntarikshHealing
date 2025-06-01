@@ -10,6 +10,7 @@ import Testimonials from '@/components/sections/Testimonials';
 import Contact from '@/components/sections/Contact';
 import SunriseSunset from '@/components/sections/SunriseSunset';
 import HinduCalendar from '@/components/sections/HinduCalendar';
+import HinduClock from '@/components/sections/HinduClock';
 
 export default function Home() {
   useEffect(() => {
